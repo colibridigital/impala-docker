@@ -158,7 +158,7 @@ Here's how it works :
 ```
 #create the file on the host :
 touch /tmp/IMPALA.txt
-docker run --rm  --link impala:impala-server -v /Users/James/Developer/scout/docker-impala/data/:/data:ro jamescross91/impala hdp impala-server hadoop fs -put /data/captured_20.pcap1.csv /tmp/pcap.csv
+docker run --rm  --link impala:impala-server -v $(pwd)/data/:/data:ro jamescross91/impala hdp impala-server hadoop fs -put /data/**/*.csv /tmp
 
 docker run --rm  --link impala:impala-server -v /tmp/:/work:ro rooneyp1976/impala hdp impala-server hadoop fs -put /work/IMPALA.txt /tmp/IMPALA_USING_VOLUME.txt
 
@@ -193,14 +193,3 @@ Once created, pre-compute some meta data:
 ```
 compute stats pcap;
 ```
-
-
-
-
-
-
-
-
-
-
-
